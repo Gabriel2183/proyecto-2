@@ -1,11 +1,13 @@
-import random
+from random import *
 simulación = "n"
 pagoporunidaddedolorin = 5
 codigoid = []
 estación = []
 nombre = []
 apellido = []
-fechadenacimiento = []
+diadenacimiento = []
+mesdenacimiento = []
+añodenacimiento = []
 contraseña = []
 numeros_aleatoriosest1 = []
 numeros_aleatoriosest2 = []
@@ -22,8 +24,12 @@ def ingresar_operarios ():
     nombre.append (input())
     print ("Ingrese el apellido del operario")
     apellido.append (input())
-    print ("Ingrese la fecha de nacimiento")
-    fechadenacimiento.append (input())
+    print ("Ingrese el día de nacimiento")
+    diadenacimiento.append (input())
+    print ("Ingrese el mes de nacimiento")
+    mesdenacimiento.append (input())
+    print ("Ingrese el año de nacimiento")
+    añodenacimiento.append (input())
     print ("Ingrese la contraseña")
     contraseña.append (input())
     print ("Operario registrado con éxito")
@@ -35,7 +41,7 @@ def mostrar_equipo_de_trabajo ():
         print ("Estación de trabajo: ", estación[i])
         print ("Nombre: ", nombre[i])
         print ("Apellido: ", apellido[i])
-        print ("Fecha de nacimiento: ", fechadenacimiento[i])
+        print ("Fecha de nacimiento: ", diadenacimiento[i], "/", mesdenacimiento[i], "/" ,añodenacimiento[i])
         print ("Contraseña: ", contraseña[i])
         print ("---------------------------")
 
@@ -43,13 +49,13 @@ def mostrar_equipo_de_trabajo ():
 def simular_paso_del_tiempo():
     print("Simular paso del tiempo")
     for i in range(5):
-        numeroest1 = random.randint(75, 120)
+        numeroest1 = randint(75, 120)
         numeros_aleatoriosest1.append(numeroest1)
     for i in range(5):
-        numeroest2 = random.randint(75, 120)
+        numeroest2 = randint(75, 120)
         numeros_aleatoriosest2.append(numeroest2)
     for i in range(5):
-        numeroest3 = random.randint(75, 120)
+        numeroest3 = randint(75, 120)
         numeros_aleatorioest3.append(numeroest3)
 
 def historial_de_producción ():
@@ -66,12 +72,29 @@ def control_de_calidad ():
    continuar = "s"
    while continuar == "s":
     print ("control de calidad")
-    print ("Ingrese la cantidad de producto defecturoso")
-    input ()
-    print ("ingrese el dia que se encontró el producto defectuoso")
-    input ()
+    estación = input ()
     print ("ingrese la estación en la que se encontró el producto defectuoso")
     input ()
+    if estación == 1:
+        print ("ingrese el dia que se encontró el producto defectuoso")
+        dia = input ()
+        print ("Ingrese la cantidad de producto defecturoso")
+        cantidad = input ()
+        numeros_aleatoriosest1[dia] -= cantidad
+    elif estación == 2:
+        print ("ingrese el dia que se encontró el producto defectuoso")
+        dia = input ()
+        print ("Ingrese la cantidad de producto defecturoso")
+        cantidad = input ()
+        numeros_aleatoriosest2[dia] -= cantidad
+    elif estación == 3:
+        print ("ingrese el dia que se encontró el producto defectuoso")
+        dia = input ()
+        print ("Ingrese la cantidad de producto defecturoso")
+        cantidad = input ()
+        numeros_aleatorioest3[dia] -= cantidad
+
+
     print ("¿Desea continuar con el control de calidad? s/n")
     continuar = input ()
 
@@ -101,13 +124,33 @@ def pago_a_operarios ():
     for i in range (5):
         if numeros_aleatorioest3[i] > 100:
             pagototalest3 += 15.00
-        cantidadproducidaest3 += numeros_aleatorioest3[i]
+            cantidadproducidaest3 += numeros_aleatorioest3[i]
     pagototalest3 += cantidadproducidaest3 * pagoporunidaddedolorin
     print ("El pago total de la estación 3 es de: ", pagototalest3)
 
+def reestablecer_contraseña (): 
+    print ("Reestablecer contraseña")
+    print("Buscar código de identificación")
+    codigo = input("Ingrese el código de identificación: ")
+    posicion = codigoid.index(codigo)
+    print("Ingrese la nueva contraseña")
+    contraseña[posicion] = (nombre[posicion] + "." + apellido[posicion] + añodenacimiento[posicion]) 
+    print("Contraseña reestablecida con éxito")
 
-
-
+def cambiar_contraseña ():
+    print ("Cambiar contraseña")
+    print ("Ingrese el código de identificación")
+    codigo = input()
+    print ("Ingrese la contraseña actual")
+    contraseñaactual = input()
+    posicion = codigoid.index(codigo)
+    if contraseñaactual == contraseña[posicion]:
+        print ("Ingrese la nueva contraseña")
+        contraseña[posicion] = input()
+        print ("Contraseña cambiada con éxito")
+    else:
+        print ("Contraseña incorrecta")
+        
 
 while True:
     print ("Bienvenido al sistema de registro de usuarios")
@@ -121,3 +164,33 @@ while True:
     print ("7. Reestablecer contraseña")
     print ("8. Cambiar contraseña")
     print ("9. Salir")
+    opcion = input()
+
+    if opcion == "1":
+        ingresar_operarios()
+    elif opcion == "2":
+        mostrar_equipo_de_trabajo()
+    elif opcion == "3":
+        simulación = "s"
+        simular_paso_del_tiempo()    
+    elif opcion == "4":
+        if simulación == "s":
+            historial_de_producción()
+        else:
+            print ("Favor de realizar la simulación del paso del tiempo")
+    elif opcion == "5":
+        if simulación == "s":
+            control_de_calidad()
+        else:
+            print ("Favor de realizar la simulación del paso del tiempo")
+    elif opcion == "6":
+        if simulación == "s":
+            pago_a_operarios()
+        else:
+            print ("Favor de realizar la simulación del paso del tiempo")
+    elif opcion == "7":
+        reestablecer_contraseña()
+    elif opcion == "8":
+        cambiar_contraseña()
+    elif opcion == "9":
+        break
