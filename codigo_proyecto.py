@@ -177,7 +177,7 @@ def cambiar_contraseña ():
     else:
         print ("Contraseña incorrecta")
         
-ingresar_operarios()
+ingresar_supervisor()
 while True:
     print ("Bienvenido al sistema de registro de usuarios")
     print ("Seleccione una opción")
