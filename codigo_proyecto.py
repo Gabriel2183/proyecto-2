@@ -24,21 +24,24 @@ def ingresar_supervisor ():
     print ("Ingrese el apellido del supervisor")
     apellido.append (input())
     print ("Ingrese el día de nacimiento")
-    diadenacimiento.append (input())
+    diadenacimiento.append (int(input()))
     print ("Ingrese el mes de nacimiento")
-    mesdenacimiento.append (input())
+    mesdenacimiento.append (int(input()))
     print ("Ingrese el año de nacimiento")
-    añodenacimiento.append (input())
+    añodenacimiento.append (int(input()))
     print ("Ingrese la contraseña")
     contraseña.append (input())
     print ("Supervisor registrado con éxito")
+    print ("")
+    print ("---------------------------")
+
 
 def ingresar_operarios ():
     print ("Ingresar operarios")
     print ("Ingrese el codigo de identificación")
     codigoid.append (input())
     print ("Ingrese la estación de trabajo")
-    estacn = input ()
+    estacn = int(input ())
     if estación >= 1 and estación <= 3:
         estación.append (estacn)
     else:
@@ -48,13 +51,13 @@ def ingresar_operarios ():
     print ("Ingrese el apellido del operario")
     apellido.append (input())
     print ("Ingrese el día de nacimiento")
-    diadenacimiento.append (input())
+    diadenacimiento.append (int(input()))
     print ("Ingrese el mes de nacimiento")
-    mesdenacimiento.append (input())
+    mesdenacimiento.append (int(input()))
     print ("Ingrese el año de nacimiento")
-    añodenacimiento.append (input())
+    añodenacimiento.append (int(input()))
     print ("Ingrese la contraseña")
-    contraseña.append (input())
+    contraseña.append (int(input()))
     print ("Operario registrado con éxito")
 
 def mostrar_equipo_de_trabajo ():
@@ -159,9 +162,12 @@ def reestablecer_contraseña ():
     print("Buscar código de identificación")
     codigo = input("Ingrese el código de identificación: ")
     posicion = codigoid.index(codigo)
-    print("Ingrese la nueva contraseña")
-    contraseña[posicion] = (nombre[posicion] + "." + apellido[posicion] + añodenacimiento[posicion]) 
-    print("Contraseña reestablecida con éxito")
+    if posicion == -1:
+        print("Código de identificación no encontrado")
+    else:
+        contraseña[posicion] = (nombre[posicion] + apellido[posicion] + "." + str(añodenacimiento[posicion]))
+        print("Contraseña reestablecida con éxito")
+        print("Su nueva contraseña es: ", contraseña[posicion])
 
 def cambiar_contraseña ():
     print ("Cambiar contraseña")
@@ -178,6 +184,9 @@ def cambiar_contraseña ():
         print ("Contraseña incorrecta")
         
 ingresar_supervisor()
+print ("Presione enter para continuar")
+input()
+os.system('cls' if os.name == 'nt' else 'clear')
 while True:
     print ("Bienvenido al sistema de registro de usuarios")
     print ("Seleccione una opción")
