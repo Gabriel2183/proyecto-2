@@ -1,4 +1,5 @@
 from random import *
+import os
 simulación = "n"
 pagoporunidaddedolorin = 5
 codigoid = []
@@ -12,7 +13,7 @@ contraseña = []
 numeros_aleatoriosest1 = []
 numeros_aleatoriosest2 = []
 numeros_aleatorioest3 = []
-
+    
 
 def ingresar_operarios ():
     print ("Ingresar operarios")
@@ -164,10 +165,11 @@ while True:
     print ("7. Reestablecer contraseña")
     print ("8. Cambiar contraseña")
     print ("9. Salir")
-    opcion = input()
-
+    opcion = input("Ingrese su opción: ")
+    os.system('cls' if os.name == 'nt' else 'clear')
     if opcion == "1":
         ingresar_operarios()
+        os.system('cls' if os.name == 'nt' else 'clear')
     elif opcion == "2":
         mostrar_equipo_de_trabajo()
     elif opcion == "3":
