@@ -18,17 +18,61 @@ def ingresar_supervisor ():
     print ("Ingresar supervisor")
     print ("Ingrese el código de identificación")
     codigoid.append (input())
+    os.system('cls' if os.name == 'nt' else 'clear')
     estación.append ("Supervisor")
     print ("Ingrese el nombre del supervisor")
     nombre.append (input())
+    os.system('cls' if os.name == 'nt' else 'clear')
     print ("Ingrese el apellido del supervisor")
     apellido.append (input())
-    print ("Ingrese el día de nacimiento")
-    diadenacimiento.append (int(input()))
-    print ("Ingrese el mes de nacimiento")
-    mesdenacimiento.append (int(input()))
-    print ("Ingrese el año de nacimiento")
-    añodenacimiento.append (int(input()))
+    os.system('cls' if os.name == 'nt' else 'clear')
+    while True:
+        print ("Ingrese el día de nacimiento")
+        dianaci = int(input())      
+        if dianaci > 0 and dianaci < 32:
+            print ("ingrese un dia de nacimiento valido")
+        else:
+            diadenacimiento.append (dianaci)
+            print ("Presione enter para continuar")
+            input()
+            os.system('cls' if os.name == 'nt' else 'clear')
+            break
+        print ("Presione enter para continuar")
+        input()
+        os.system('cls' if os.name == 'nt' else 'clear')
+    
+    while True:
+        print ("Ingrese el mes de nacimiento")
+        mesnaci = int(input())
+        if mesnaci > 0 and mesnaci < 13:
+            print ("ingrese un mes de nacimiento valido")
+        else:
+            mesdenacimiento.append (mesnaci)
+            print ("Presione enter para continuar")
+            input()
+            os.system('cls' if os.name == 'nt' else 'clear')
+            break
+        print ("Presione enter para continuar")
+        input()
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        while True:
+            print ("Ingrese el año de nacimiento")
+            añonaci = int(input())
+            if añonaci > 0 and añonaci < 2024:
+                print ("ingrese un año de nacimiento valido")
+            elif añonaci > 2005 :
+                print ("El supervisor debe ser mayor de edad")
+            else:
+                añodenacimiento.append (añonaci)
+                print ("Presione enter para continuar")
+                input()
+                os.system('cls' if os.name == 'nt' else 'clear')
+                break
+            print ("Presione enter para continuar")
+            input()
+            os.system('cls' if os.name == 'nt' else 'clear')
+            
     print ("Ingrese la contraseña")
     contraseña.append (input())
     print ("Supervisor registrado con éxito")
@@ -41,9 +85,9 @@ def ingresar_operarios ():
     print ("Ingrese el codigo de identificación")
     codigoid.append (input())
     print ("Ingrese la estación de trabajo")
-    estacn = int(input ())
-    if estación >= 1 and estación <= 3:
-        estación.append (estacn)
+    estacón = int(input ())
+    if (estacón >= 1) and (estacón <= 3):
+        estación.append (estacón)
     else:
         print ("Estación no válida")        
     print ("Ingrese el nombre del operario")
@@ -51,13 +95,54 @@ def ingresar_operarios ():
     print ("Ingrese el apellido del operario")
     apellido.append (input())
     print ("Ingrese el día de nacimiento")
-    diadenacimiento.append (int(input()))
-    print ("Ingrese el mes de nacimiento")
-    mesdenacimiento.append (int(input()))
-    print ("Ingrese el año de nacimiento")
-    añodenacimiento.append (int(input()))
+    while True:
+        print ("Ingrese el día de nacimiento")
+        dianaci = int(input())      
+        if dianaci > 0 and dianaci < 32:
+            print ("ingrese un dia de nacimiento valido")
+        else:
+            diadenacimiento.append (dianaci)
+            print ("Presione enter para continuar")
+            input()
+            os.system('cls' if os.name == 'nt' else 'clear')
+            break
+        print ("Presione enter para continuar")
+        input()
+        os.system('cls' if os.name == 'nt' else 'clear')
+    
+    while True:
+        print ("Ingrese el mes de nacimiento")
+        mesnaci = int(input())
+        if mesnaci > 0 and mesnaci < 13:
+            print ("ingrese un mes de nacimiento valido")
+        else:
+            mesdenacimiento.append (mesnaci)
+            print ("Presione enter para continuar")
+            input()
+            os.system('cls' if os.name == 'nt' else 'clear')
+            break
+        print ("Presione enter para continuar")
+        input()
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        while True:
+            print ("Ingrese el año de nacimiento")
+            añonaci = int(input())
+            if añonaci > 0 and añonaci < 2024:
+                print ("ingrese un año de nacimiento valido")
+            elif añonaci > 2005 :
+                print ("Debes de ser mayor de edad para trabajar en la empresa")
+            else:
+                añodenacimiento.append (añonaci)
+                print ("Presione enter para continuar")
+                input()
+                os.system('cls' if os.name == 'nt' else 'clear')
+                break
+            print ("Presione enter para continuar")
+            input()
+            os.system('cls' if os.name == 'nt' else 'clear')
     print ("Ingrese la contraseña")
-    contraseña.append (int(input()))
+    contraseña.append (input())
     print ("Operario registrado con éxito")
 
 def mostrar_equipo_de_trabajo ():
@@ -74,17 +159,14 @@ def mostrar_equipo_de_trabajo ():
 
 def simular_paso_del_tiempo():
     print("Simular paso del tiempo")
-    for i in range(5):
-        numeroest1 = randint(75, 120)
-        numeroest1 = int(numeroest1 - numeroest1 * 0.1)      
+    for i in range (5):
+        numeroest1 = randint(75, 120)      
         numeros_aleatoriosest1.append(numeroest1)
-    for i in range(5):
+    for i in range (5):
         numeroest2 = randint(75, 120)
-        numeroest2 = int(numeroest2 - numeroest2 * 0.06)
         numeros_aleatoriosest2.append(numeroest2)
-    for i in range(5):
+    for i in range (5):
         numeroest3 = randint(75, 120)
-        numeroest3 = int(numeroest3 - numeroest3 * 0.03)
         numeros_aleatorioest3.append(numeroest3)
 
 def historial_de_producción ():
@@ -98,34 +180,13 @@ def historial_de_producción ():
     print ("Producto ", numeros_aleatorioest3[i], numeros_aleatorioest3[i+1], numeros_aleatorioest3[i+2], numeros_aleatorioest3[i+3], numeros_aleatorioest3[i+4])
 
 def control_de_calidad ():
-   continuar = "s"
-   while continuar == "s":
-    print ("control de calidad")
-    estación = input ()
-    print ("ingrese la estación en la que se encontró el producto defectuoso")
-    input ()
-    if estación == 1:
-        print ("ingrese el dia que se encontró el producto defectuoso")
-        dia = input ()
-        print ("Ingrese la cantidad de producto defecturoso")
-        cantidad = input ()
-        numeros_aleatoriosest1[dia] -= cantidad
-    elif estación == 2:
-        print ("ingrese el dia que se encontró el producto defectuoso")
-        dia = input ()
-        print ("Ingrese la cantidad de producto defecturoso")
-        cantidad = input ()
-        numeros_aleatoriosest2[dia] -= cantidad
-    elif estación == 3:
-        print ("ingrese el dia que se encontró el producto defectuoso")
-        dia = input ()
-        print ("Ingrese la cantidad de producto defecturoso")
-        cantidad = input ()
-        numeros_aleatorioest3[dia] -= cantidad
+    for i in range (4):
+     numeros_aleatoriosest1[i] = (numeros_aleatoriosest1[i]-numeros_aleatoriosest1[i]*0.1)
+     numeros_aleatoriosest2[i] = (numeros_aleatoriosest2[i]-numeros_aleatoriosest2[i]*0.06)
+     numeros_aleatorioest3[i] = (numeros_aleatorioest3[i]-numeros_aleatorioest3[i]*0.03)
+    print ("Control de calidad realizado con éxito")
+    input("presine enter para continuar ")
 
-
-    print ("¿Desea continuar con el control de calidad? s/n")
-    continuar = input ()
 
 def pago_a_operarios ():
     print ("Pago a operarios")
@@ -159,15 +220,12 @@ def pago_a_operarios ():
 
 def reestablecer_contraseña (): 
     print ("Reestablecer contraseña")
-    print("Buscar código de identificación")
-    codigo = input("Ingrese el código de identificación: ")
+    print("Ingrese el código de identificación: ")
+    codigo = input()
     posicion = codigoid.index(codigo)
-    if posicion == -1:
-        print("Código de identificación no encontrado")
-    else:
-        contraseña[posicion] = (nombre[posicion] + apellido[posicion] + "." + str(añodenacimiento[posicion]))
-        print("Contraseña reestablecida con éxito")
-        print("Su nueva contraseña es: ", contraseña[posicion])
+    contraseña[posicion] = (nombre[posicion]  + "."  + apellido[posicion] + str(añodenacimiento[posicion]))
+    print("Contraseña reestablecida con éxito")
+    
 
 def cambiar_contraseña ():
     print ("Cambiar contraseña")
